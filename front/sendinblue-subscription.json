@@ -1,0 +1,7 @@
+{
+    "name": "MailChimp Subscription",
+    "slug": "sendinblue-subscription",
+    "description": "Plugin to subscribe and unsubscribe users to the newsletter in MailChimp.",
+    "type": "decorator",
+    "js": "/plugins/sendinblue-subscription/sendinblue-subscription.js"
+}

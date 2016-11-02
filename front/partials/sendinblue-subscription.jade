@@ -1,0 +1,29 @@
+a.close(href="", title="{{'close' | translate}}")
+    tg-svg(
+        svg-icon="icon-close"
+    )
+form
+    h2.title(translate="LIGHTBOX.DELETE_ACCOUNT.CONFIRM")
+    p.subtitle(translate="LIGHTBOX.DELETE_ACCOUNT.SUBTITLE")
+    p(ng-bind-html="'LIGHTBOX.DELETE_ACCOUNT.BLOCK_PROJECT' | translate")
+    .newsletter
+        input(
+            name="unsuscribe"
+            type="checkbox"
+            id="unsuscribe"
+        )
+        label(
+            for="unsuscribe"
+            translate="LIGHTBOX.DELETE_ACCOUNT.NEWSLETTER_LABEL_TEXT"
+        )
+    .options
+        a.button-green(
+            href=""
+            title="{{'LIGHTBOX.DELETE_ACCOUNT.CANCEL' | translate}}"
+            translate="LIGHTBOX.DELETE_ACCOUNT.CANCEL"
+        )
+        a.button-red(
+            href=""
+            title="{{'LIGHTBOX.DELETE_ACCOUNT.ACCEPT' | translate}}"
+            translate="LIGHTBOX.DELETE_ACCOUNT.ACCEPT"
+        )
