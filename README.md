@@ -4,17 +4,27 @@ Taiga Contrib Sendinblue Subscription
 ![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
 [![Managed with Taiga.io](https://tree.taiga.io/support/images/taiga-badge-gh.png)](https://taiga.io "Managed with Taiga.io")
 
-Plugin to subscribe and unsubscribe users to the newsleter and user list in Sendinblue
+Plugin to subscribe and unsubscribe users to the newsletter and user list in Sendinblue
 
 
 Installation
 ------------
+
+### Configure Sendinblue
+
+In Sendinblue you have to add two custom attributes to your contacts.
+
+1 - Open Sendinblue.
+2 - Go to `Settings` > `Attributes & CRM`
+3 - Add the attributes:
+    - Remove 'SURNAME' and 'NAME'
+    - Add 'FULL_NAME' and 'USERNAME' (text type both of them).
+
+
 ### Production env
 
 #### Taiga Back
 
-TODO
-<!--
 In your Taiga back python virtualenv install the pip package `taiga-contrib-sendinblue-subscription` with:
 
 ```bash
@@ -30,7 +40,6 @@ Then modify in `taiga-back` your `settings/local.py` and include this line:
 
   INSTALLED_APPS += ["taiga_contrib_sendinblue_subscription"]
 ```
--->
 
 
 #### Taiga Front
@@ -60,8 +69,6 @@ Include in your `dist/conf.json` in the `contribPlugins` list the value `"/plugi
 
 #### Taiga Back
 
-TODO
-<!--
 Clone the repo and
 
 ```bash
@@ -78,7 +85,6 @@ Then modify in `taiga-back` your `settings/local.py` and include this line:
 
   INSTALLED_APPS += ["taiga_contrib_sendinblue_subscription"]
 ```
--->
 
 
 #### Taiga Front
@@ -112,14 +118,3 @@ and use:
 
 - `gulp` to regenerate the source and watch for changes.
 - `gulp build` to only regenerate the source.
-
-
-<!--
-Tests
------
-```bash
-  cd taiga-back
-  workon taiga
-  py.test ../taiga-contrib-sendinblue-subscription/back/taiga_contrib_sendinblue_subscription_tests
-```
--->
