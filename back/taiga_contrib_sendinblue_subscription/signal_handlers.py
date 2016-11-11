@@ -24,6 +24,14 @@ def subscribe_user_to_sendinblue(sender, **kwargs):
     services.subscribe_new_user(user.username, user.full_name, user.email)
 
 
+def change_user_email_in_sendinblue(sender, **kwargs):
+    user = kwargs["user"]
+    old_email = kwargs["old_email"]
+    new_email = kwargs["new_email"]
+
+    services.update_user_info(old_email, new_email, user.username, user.full_name)
+
+
 def unsubscribe_user_from_sendinblue(sender, **kwargs):
     user = kwargs["user"]
 

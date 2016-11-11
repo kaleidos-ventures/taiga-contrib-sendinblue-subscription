@@ -58,18 +58,23 @@ def check_sendinblue_taiga_users_list_id(app_configs, **kwargs):
 
 def connect_signals():
     from taiga.auth.signals import user_registered as user_registered_signal
+    from taiga.users.signals import user_change_email as user_change_email_signal
     from taiga.users.signals import user_cancel_account as user_cancel_account_signal
     from . import signal_handlers as handlers
     user_registered_signal.connect(handlers.subscribe_user_to_sendinblue,
                                    dispatch_uid="subscribe_user_to_sendinblue")
+    user_change_email_signal.connect(handlers.change_user_email_in_sendinblue,
+                                     dispatch_uid="change_user_email_in_sendinblue")
     user_cancel_account_signal.connect(handlers.unsubscribe_user_from_sendinblue,
                                        dispatch_uid="unsubscribe_user_from_sendinblue")
 
 
 def disconnect_signals():
     from taiga.auth.signals import user_registered as user_registered_signal
+    from taiga.users.signals import user_change_email as user_change_email_signal
     from taiga.users.signals import user_cancel_account as user_cancel_account_signal
     user_registered_signal.disconnect(dispatch_uid="subscribe_user_to_sendinblue")
+    user_change_email_signal.disconnect(dispatch_uid="change_user_email_in_sendinblue")
     user_cancel_account_signal.disconnect(dispatch_uid="unsubscribe_user_from_sendinblue")
 
 

@@ -49,6 +49,32 @@ def subscribe_new_user(username, full_name, email):
 
 @utils.catch_connection_errors
 @utils.log_api_response
+def update_user_info(old_email, new_email, username, full_name):
+    api = _get_sendinblue_api()
+
+    data = {
+        "email": old_email
+    }
+    listid = api.get_user(data).get("data", {}).get("listid", [])
+
+    api.delete_user(data)
+
+    data = {
+        "email": new_email,
+        "attributes": {
+            "USERNAME": username,
+            "FULL_NAME": full_name,
+        },
+        "listid": listid or [
+            settings.SENDINBLUE_TAIGA_USERS_LIST_ID,
+            settings.SENDINBLUE_NEWSLETTER_LIST_ID
+        ]
+    }
+    return api.create_update_user(data)
+
+
+@utils.catch_connection_errors
+@utils.log_api_response
 def unsubscribe_user_from_newsletter_list(email):
     data = {
         "id": settings.SENDINBLUE_NEWSLETTER_LIST_ID,
