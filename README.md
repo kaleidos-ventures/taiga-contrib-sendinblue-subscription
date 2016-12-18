@@ -1,3 +1,5 @@
+**NOTE: *This plugin is deprecated since Dec'16***
+
 Taiga Contrib Sendinblue Subscription
 =====================================
 
